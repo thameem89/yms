@@ -1,7 +1,13 @@
 export const enquiryTypes = [
   "General Enquiry", "Engineering / Design", "Fabrication", "Erection",
-  "Protective Coating", "Fireproofing", "Project Enquiry",
+  "Protective Coating", "Fireproofing", "Surface Preparation", "Project Enquiry",
 ] as const;
+
+export type EnquiryType = (typeof enquiryTypes)[number];
+
+export function enquiryLink(type: EnquiryType) {
+  return "/contact?type=" + encodeURIComponent(type) + "#enquiry";
+}
 
 export const enquiryFields = {
   name: { label: "Name", min: 2, max: 100 },
@@ -16,6 +22,15 @@ export const enquiryFields = {
 export type EnquiryField = keyof typeof enquiryFields;
 export type Enquiry = Record<EnquiryField, string>;
 export type EnquiryErrors = Partial<Record<EnquiryField, string>>;
+
+export function formatEnquiry(values: Enquiry) {
+  const subject = "YMS website enquiry — " + values.type;
+  const text = (Object.keys(enquiryFields) as EnquiryField[])
+    .filter((key) => values[key])
+    .map((key) => enquiryFields[key].label + "\r\n" + values[key])
+    .join("\r\n\r\n");
+  return { subject, text };
+}
 
 export function validateEnquiry(input: Record<string, unknown>) {
   const errors: EnquiryErrors = {};

@@ -20,7 +20,9 @@ test("primary navigation and detail routes", async ({ page, isMobile }) => {
   await page.locator(".service-card").filter({ hasText: "Steel Fabrication" }).getByRole("link").click();
   await expect(page).toHaveURL("/services/steel-fabrication");
   await expect(hero).toHaveText("Steel Fabrication");
-  await expect(page.getByRole("link", { name: "Enquire About This Service" })).toBeVisible();
+  await page.getByRole("link", { name: "Enquire About This Service" }).click();
+  await expect(page).toHaveURL("/contact?type=Fabrication#enquiry");
+  await expect(page.getByLabel("Enquiry type")).toHaveValue("Fabrication");
 
   await page.goto("/projects");
   await page.getByRole("button", { name: "Aviation", exact: true }).click();
@@ -29,6 +31,8 @@ test("primary navigation and detail routes", async ({ page, isMobile }) => {
   await page.locator(".project-card").filter({ hasText: "Dubai International Airport Concourse IV" }).getByRole("link").click();
   await expect(hero).toHaveText("Dubai International Airport Concourse IV");
   await expect(page.getByText("Dar Al-Handasah (Shair & Partners)", { exact: true })).toBeVisible();
+  await page.locator(".contact-band").getByRole("link", { name: "Contact YMS" }).click();
+  await expect(page.getByLabel("Enquiry type")).toHaveValue("Project Enquiry");
 });
 
 test("gallery opens, moves between images and restores focus", async ({ page, isMobile }) => {
@@ -53,35 +57,71 @@ test("gallery opens, moves between images and restores focus", async ({ page, is
   await expect(tile).toBeFocused();
 });
 
-test("contact validation and honest unconfigured delivery state", async ({ page }) => {
+test("contact validates and prepares a complete email draft without a provider", async ({ page, request }) => {
   await page.goto("/contact");
-  await page.getByRole("button", { name: "Send enquiry" }).click();
+  const prepare = page.getByRole("button", { name: "Prepare email draft" });
+  await prepare.click();
   await expect(page.locator(".enquiry-form").getByRole("alert")).toHaveText("Check the highlighted fields.");
   await expect(page.getByRole("textbox", { name: "Name" })).toBeFocused();
+
+  const message = "This is a website validation check.";
   await page.getByLabel("Name").fill("QA Test");
-  await page.getByLabel("Email", { exact: false }).fill("qa@example.com");
+  await page.getByLabel("Email").fill("qa@example.com");
   await page.getByLabel("Enquiry type").selectOption("Project Enquiry");
-  await page.getByLabel("Message").fill("This is a website validation check.");
-  const submission = page.waitForResponse((response) => response.url().endsWith("/api/enquiry"));
-  await page.getByRole("button", { name: "Send enquiry" }).click();
-  expect((await submission).status()).toBe(503);
-  await expect(page.locator(".enquiry-form").getByRole("alert")).toContainText("temporarily unavailable");
-  await expect(page.getByLabel("Message")).toHaveValue("This is a website validation check.");
+  await page.getByLabel("Message").fill(message);
+  await prepare.click();
+
+  await expect(page.getByRole("heading", { name: "Your email draft is ready" })).toBeFocused();
+  await expect(page.getByLabel("Draft message")).toHaveValue(new RegExp(message));
+  const link = new URL((await page.getByRole("link", { name: "Open email app" }).getAttribute("href"))!);
+  expect(link.protocol).toBe("mailto:");
+  expect(link.pathname).toBe("info@yms-uae.com");
+  expect(link.searchParams.get("subject")).toContain("Project Enquiry");
+  expect(link.searchParams.get("body")).toContain(message);
+
+  await page.getByRole("textbox", { name: /^Message/ }).fill("Updated enquiry for the next draft.");
+  await expect(page.getByRole("link", { name: "Open email app" })).toHaveCount(0);
+
+  const api = await request.post("/api/enquiry", { data: { name: "QA Test", email: "qa@example.com", type: "Project Enquiry", message } });
+  expect(api.status()).toBe(503);
+});
+
+test("contact map opens on demand and shares its location with directions", async ({ page }) => {
+  await page.route("https://maps.google.com/**", (route) => route.fulfill({ body: "<title>Map test fixture</title>", contentType: "text/html" }));
+  await page.goto("/contact");
+  const map = page.locator(".contact-map");
+  const directions = new URL((await map.getByRole("link", { name: "Get directions" }).getAttribute("href"))!);
+  const frame = map.locator("iframe");
+  await expect(frame).toHaveCount(0);
+  await map.getByRole("button", { name: "Load Google Maps" }).click();
+  await expect(frame).toBeVisible();
+  const embed = new URL((await frame.getAttribute("src"))!);
+  expect(embed.searchParams.get("q")).toBe(directions.searchParams.get("destination"));
 });
 
 test("contact reveals loading and success when delivery is accepted", async ({ page }) => {
+  const configuredURL = process.env.PLAYWRIGHT_CONFIGURED_URL || (process.env.PLAYWRIGHT_BASE_URL ? "" : "http://127.0.0.1:3103");
+  test.skip(!configuredURL, "Requires the configured test instance.");
   let confirmDelivery: () => void = () => {};
   const acknowledgement = new Promise<void>((resolve) => { confirmDelivery = resolve; });
+  let attempt = 0;
   await page.route("**/api/enquiry", async (route) => {
+    attempt += 1;
+    if (attempt === 1) {
+      await route.fulfill({ status: 502, json: { message: "We couldn’t send your enquiry." } });
+      return;
+    }
     await acknowledgement;
     await route.fulfill({ status: 201, json: { message: "Your enquiry has been sent." } });
   });
 
-  await page.goto("/contact");
+  await page.goto(configuredURL + "/contact");
   await page.getByLabel("Name").fill("QA Test");
   await page.getByLabel("Email").fill("qa@example.com");
   await page.getByLabel("Enquiry type").selectOption("General Enquiry");
   await page.getByLabel("Message").fill("This is a website validation check.");
+  await page.getByRole("button", { name: "Send enquiry" }).click();
+  await expect(page.getByRole("link", { name: "Open email app" })).toBeVisible();
   await page.getByRole("button", { name: "Send enquiry" }).click();
   await expect(page.getByRole("button", { name: "Sending…" })).toBeDisabled();
   confirmDelivery();
@@ -175,7 +215,7 @@ test("contact provides a direct-email fallback without JavaScript", async ({ bro
   try {
     await page.goto(baseURL + "/contact");
     await expect(page.locator(".form-panel").getByRole("link", { name: "info@yms-uae.com" })).toHaveAttribute("href", "mailto:info@yms-uae.com");
-    await expect(page.getByRole("button", { name: "Send enquiry" })).not.toBeVisible();
+    await expect(page.locator(".enquiry-form")).not.toBeVisible();
   } finally {
     await page.close();
   }

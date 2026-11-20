@@ -12,7 +12,7 @@ export function Footer() {
         <Link className="footer-brand" href="/" aria-label="YMS Engineering home"><Image src="/brand/yms-logo.svg" width={123} height={137} alt="YMS Engineering" /></Link>
         <p>Structural steel engineering, fabrication and erection across the UAE and GCC.</p>
       </div>
-      <nav aria-label="Footer navigation"><h2>Explore</h2>{navigation.slice(1).map(({ href, label }) => <Link key={href} href={href}>{label}</Link>)}</nav>
+      <nav aria-label="Footer navigation"><h2>Explore</h2>{navigation.slice(1).map(({ href, label }) => <Link key={href} href={href}>{label}</Link>)}<Link href="/career">Careers</Link></nav>
       <nav aria-label="Footer services"><h2>Capabilities</h2>{services.map(({ slug, name }) => <Link key={slug} href={"/services/" + slug}>{name}</Link>)}</nav>
       <address><h2>{company.name}</h2><p>{company.park}<br />{company.city}, {company.country}<br />P.O. Box {company.poBox}</p>
         <a href={"tel:" + company.tel}>{company.phone}</a><a href={"mailto:" + company.email}>{company.email}</a>

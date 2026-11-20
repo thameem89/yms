@@ -3,6 +3,7 @@ import { ProjectCards } from "@/components/cards";
 import { Gallery } from "@/components/gallery";
 import { ContactBand, PageHero, SectionLabel } from "@/components/visual";
 import { additionalProjectPhotos, projects } from "@/data/projects";
+import { enquiryLink } from "@/lib/enquiries";
 import { pageMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -39,6 +40,6 @@ export default async function ProjectDetail({ params }: Props) {
     </section>
     {photos.length > 0 && <section className="section light-section"><div className="wrap"><div className="section-top"><h2>Project gallery</h2></div><Gallery entries={photos} /></div></section>}
     <section className="section wrap"><div className="section-top"><h2>Related projects</h2></div><ProjectCards entries={related} /></section>
-    <ContactBand title="Discuss your steel project." />
+    <ContactBand title="Discuss your steel project." href={enquiryLink("Project Enquiry")} />
   </>;
 }

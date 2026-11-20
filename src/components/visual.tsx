@@ -27,9 +27,9 @@ export function SectionLabel({ children }: { children: React.ReactNode }) {
   return <p className="eyebrow"><span aria-hidden="true" />{children}</p>;
 }
 
-export function ContactBand({ title = "Let’s discuss your steel project.", text = "Speak with YMS about your scope, specifications and programme.", id }: { title?: string; text?: string; id?: string }) {
+export function ContactBand({ title = "Let’s discuss your steel project.", text = "Speak with YMS about your scope, specifications and programme.", id, href = "/contact" }: { title?: string; text?: string; id?: string; href?: string }) {
   return <section className="contact-band" id={id}><div className="wrap contact-band-inner">
     <div><SectionLabel>Get in touch</SectionLabel><h2>{title}</h2><p>{text}</p></div>
-    <ButtonLink href="/contact">Contact YMS</ButtonLink>
+    <ButtonLink href={href}>Contact YMS</ButtonLink>
   </div></section>;
 }

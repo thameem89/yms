@@ -1,12 +1,12 @@
 import { company } from "@/data/company";
-import { enquiryFields, type Enquiry, type EnquiryField } from "@/lib/enquiries";
+import { formatEnquiry, type Enquiry } from "@/lib/enquiries";
 
 export function enquiryMailAvailable() {
   return Boolean(process.env.RESEND_API_KEY && process.env.ENQUIRY_FROM_EMAIL);
 }
 
 export async function sendEnquiry(values: Enquiry, idempotencyKey: string, deliver: typeof fetch = fetch) {
-  const text = (Object.keys(enquiryFields) as EnquiryField[]).map((key) => enquiryFields[key].label + "\n" + values[key]).join("\n\n");
+  const { subject, text } = formatEnquiry(values);
   const response = await deliver("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -18,7 +18,7 @@ export async function sendEnquiry(values: Enquiry, idempotencyKey: string, deliv
       from: process.env.ENQUIRY_FROM_EMAIL,
       to: [process.env.ENQUIRY_TO_EMAIL || company.email],
       reply_to: values.email,
-      subject: "YMS website enquiry — " + values.type,
+      subject,
       text,
     }),
     signal: AbortSignal.timeout(8000),

@@ -3,12 +3,16 @@ import { EnquiryForm } from "@/components/enquiry-form";
 import { Icon } from "@/components/actions";
 import { PageHero, SectionLabel } from "@/components/visual";
 import { company } from "@/data/company";
+import { enquiryTypes } from "@/lib/enquiries";
+import { enquiryMailAvailable } from "@/lib/enquiry-mail";
 import { pageMetadata } from "@/lib/seo";
 
 const intro = "Contact our Dubai Industrial Park office to discuss structural steel engineering, fabrication, erection and finishing.";
 export const metadata = pageMetadata("Contact YMS Engineering", intro, "/contact", "facility-office");
 
-export default function Contact() {
+export default async function Contact({ searchParams }: { searchParams: Promise<{ type?: string | string[] }> }) {
+  const { type } = await searchParams;
+  const initialType = enquiryTypes.find((item) => item === type);
   return <>
     <PageHero title="Contact YMS Engineering" label="Contact" intro={intro} href="/contact" />
     <section className="section wrap contact-layout">
@@ -20,7 +24,7 @@ export default function Contact() {
         </address>
         <ContactMap />
       </div>
-      <div className="form-panel"><SectionLabel>Project enquiries</SectionLabel><h2>Send us an enquiry</h2><p>Fields marked * are required.</p><EnquiryForm /><noscript><p>To send an enquiry, email <a href={"mailto:" + company.email}>{company.email}</a>.</p></noscript></div>
+      <div className="form-panel" id="enquiry"><SectionLabel>Project enquiries</SectionLabel><h2>Send us an enquiry</h2><p>Fields marked * are required.</p><EnquiryForm key={initialType} initialType={initialType} onlineDelivery={enquiryMailAvailable()} /><noscript><p>To send an enquiry, email <a href={"mailto:" + company.email}>{company.email}</a>.</p></noscript></div>
     </section>
   </>;
 }

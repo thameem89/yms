@@ -321,3 +321,6 @@ h3 { font-size: clamp(1.26rem, 1.95vw, 1.8rem); }
 @media (scripting: none) {
   .enquiry-form, .form-panel > p:not(.eyebrow) { display: none; }
 }
+
+.enquiry-draft { display: grid; gap: 14px; margin-top: 18px; padding: 16px; border: 1px solid var(--border); background: #fff; }
+.enquiry-draft p { margin: 0; }
