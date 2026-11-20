@@ -24,8 +24,7 @@ export function Header() {
     <header className="site-header">
       <div className="wrap header-inner">
         <Link href="/" className="brand">
-          <Image src="/brand/yms-logo.svg" width={123} height={137} alt="" />
-          <span>YMS ENGINEERING <small>STRUCTURAL STEEL CONTRACTOR</small><span className="sr-only"> Home</span></span>
+          <Image src="/brand/yms-logo.svg" width={123} height={137} alt="YMS Engineering home" />
         </Link>
         <nav className="desktop-nav" aria-label="Main navigation">{links}</nav>
         <div className="header-cta"><ButtonLink href="/contact">Get in Touch</ButtonLink></div>
