@@ -1,0 +1,35 @@
+{
+  "name": "yms-engineering",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build --webpack",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "playwright test"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "@fontsource-variable/manrope": "latest"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "latest",
+    "tailwindcss": "latest",
+    "postcss": "latest",
+    "typescript": "~5.9.3",
+    "eslint": "^9",
+    "eslint-config-next": "latest",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/node": "^22",
+    "@playwright/test": "latest",
+    "@axe-core/playwright": "latest"
+  }
+}
