@@ -19,6 +19,6 @@ export function Icon({ name, size = 20 }: { name: "arrow" | "external" | "pin" |
   return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[name]} /></svg>;
 }
 
-export function ButtonLink({ href, children, variant = "yellow" }: { href: string; children: React.ReactNode; variant?: "yellow" | "outline" | "dark" }) {
-  return <Link className={"button " + variant} href={href}>{children}<Icon name="arrow" size={19} /></Link>;
+export function ButtonLink({ href, children, variant = "yellow", withIcon = true }: { href: string; children: React.ReactNode; variant?: "yellow" | "outline" | "dark"; withIcon?: boolean }) {
+  return <Link className={"button " + variant} href={href}>{children}{withIcon && <Icon name="arrow" size={19} />}</Link>;
 }

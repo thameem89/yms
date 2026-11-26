@@ -4,7 +4,7 @@ import AxeBuilder from "@axe-core/playwright";
 test("primary navigation and detail routes", async ({ page, isMobile }) => {
   await page.goto("/");
   const hero = page.getByRole("heading", { level: 1 });
-  await expect(hero).toContainText("Engineering steel.");
+  await expect(hero).toContainText("Engineering complex steel structures.");
   if (isMobile) {
     const trigger = page.getByRole("button", { name: "Open menu" });
     await trigger.click();
@@ -30,8 +30,8 @@ test("primary navigation and detail routes", async ({ page, isMobile }) => {
   await expect(page.locator(".project-card")).toHaveCount(4);
   await page.locator(".project-card").filter({ hasText: "Dubai International Airport Concourse IV" }).getByRole("link").click();
   await expect(hero).toHaveText("Dubai International Airport Concourse IV");
-  await expect(page.getByText("Dar Al-Handasah (Shair & Partners)", { exact: true })).toBeVisible();
-  await page.locator(".contact-band").getByRole("link", { name: "Contact YMS" }).click();
+  await expect(page.getByText("Dar Al Handasah", { exact: true })).toBeVisible();
+  await page.locator(".contact-band").getByRole("link", { name: "Project Enquiry" }).click();
   await expect(page.getByLabel("Enquiry type")).toHaveValue("Project Enquiry");
 });
 
@@ -161,7 +161,7 @@ test("sitemap routes render and internal links are covered", async ({ request },
   test.skip(testInfo.project.name === "mobile", "The sitemap and response metadata are viewport-independent.");
   const sitemap = await request.get("/sitemap.xml");
   const urls = [...(await sitemap.text()).matchAll(/<loc>(https:\/\/www\.ymsengineering\.com[^<]+)<\/loc>/g)].map((match) => match[1]);
-  expect(urls).toHaveLength(39);
+  expect(urls).toHaveLength(55);
   const paths = new Set(urls.map((url) => new URL(url).pathname));
   const titles = new Set<string>();
   for (const url of urls) {
@@ -187,7 +187,7 @@ test("sitemap routes render and internal links are covered", async ({ request },
 
 test("layout has no horizontal overflow at target widths", async ({ page, isMobile }) => {
   const widths = isMobile ? [360, 390, 430, 768] : [1024, 1366, 1440, 1920];
-  for (const path of ["/", "/about", "/services", "/facilities", "/projects", "/contact", "/qhse"]) {
+  for (const path of ["/", "/about", "/services", "/facilities", "/facilities/machinery-equipment", "/services/design-engineering", "/projects", "/projects/damac-bay-2", "/contact", "/qhse"]) {
     await page.goto(path);
     for (const width of widths) {
       await page.setViewportSize({ width, height: 900 });
@@ -197,7 +197,7 @@ test("layout has no horizontal overflow at target widths", async ({ page, isMobi
 });
 
 test("key photos load and key pages pass basic accessibility scans", async ({ page }) => {
-  for (const path of ["/", "/projects", "/contact"]) {
+  for (const path of ["/", "/projects", "/projects/al-habtoor-tower", "/facilities/machinery-equipment", "/services/design-engineering", "/contact"]) {
     await page.goto(path);
     await page.evaluate(() => document.fonts.ready);
     if (path !== "/contact") {
@@ -219,4 +219,25 @@ test("contact provides a direct-email fallback without JavaScript", async ({ bro
   } finally {
     await page.close();
   }
+});
+
+test("signature projects distinguish project imagery and scope", async ({ page }) => {
+  await page.goto("/");
+  const cards = page.locator("#projects .project-card");
+  await expect(cards.locator("h3")).toHaveText([
+    "Al Habtoor Tower", "DAMAC Bay 2", "25hours Heimat",
+    "Al Habtoor Grand Residences", "Burj Azizi Site Bridge", "City Walk Bridge Gantry",
+  ]);
+  await expect(page.getByText("Depending on project type.", { exact: true })).toBeVisible();
+  await cards.first().getByRole("link").click();
+  await expect(page).toHaveURL("/projects/al-habtoor-tower");
+  await expect(page.getByText("Steel embedments for outriggers.", { exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Fabrication", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Installation / Site Works", exact: true })).toBeVisible();
+  const tile = page.getByRole("button", { name: "View photo: Architectural render of Al Habtoor Tower" });
+  await tile.click();
+  const dialog = page.getByRole("dialog", { name: "Project photo viewer" });
+  await expect(dialog.getByRole("img", { name: "Architectural render of Al Habtoor Tower" })).toBeVisible();
+  await dialog.getByRole("button", { name: "Close gallery" }).click();
+  await expect(tile).toBeFocused();
 });

@@ -15,11 +15,13 @@ export function ServiceCards({ entries = services }: { entries?: readonly (typeo
   )}</div>;
 }
 
-export function ProjectCards({ entries }: { entries: Project[] }) {
+export type ProjectCardEntry = Pick<Project, "slug" | "name" | "category" | "location" | "image" | "imageAlt" | "scope">;
+
+export function ProjectCards({ entries }: { entries: ProjectCardEntry[] }) {
   return <div className="project-grid">{entries.map((project) => <article className="project-card" key={project.slug}>
     <Link href={"/projects/" + project.slug} prefetch={false}>
-      <div className="project-photo">{project.image ? <Photo image={project.image} alt={project.name} sizes="(max-width: 620px) 100vw, (max-width: 960px) 50vw, 33vw" /> : <div className="neutral-photo" aria-hidden="true" />}<span className="card-arrow"><Icon name="external" /></span></div>
-      <div className="project-card-body"><p className="tag">{project.category}{project.location && " / " + project.location}</p><h3>{project.name}</h3>{project.scope && <p>{project.scope}</p>}</div>
+      <div className="project-photo">{project.image ? <Photo image={project.image} alt={project.imageAlt ?? project.name} sizes="(max-width: 620px) 100vw, (max-width: 960px) 50vw, 33vw" /> : <div className="neutral-photo" aria-hidden="true" />}</div>
+      <div className="project-card-body"><p className="tag">{project.category}{project.location && " / " + project.location}</p><h3>{project.name}</h3>{project.scope && <p>{project.scope}</p>}<span className="project-link-label">View Project<span className="sr-only">: {project.name}</span></span></div>
     </Link>
   </article>)}</div>;
 }

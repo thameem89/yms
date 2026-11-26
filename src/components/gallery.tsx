@@ -8,7 +8,7 @@ import { Photo } from "@/components/photo";
 
 type Entry = { image: MediaKey; caption: string };
 
-export function Gallery({ entries }: { entries: Entry[] }) {
+export function Gallery({ entries }: { entries: readonly Entry[] }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const start = useRef<number | null>(null);
   const [active, setActive] = useState(0);

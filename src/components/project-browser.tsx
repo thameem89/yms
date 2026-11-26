@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { ProjectCards } from "@/components/cards";
-import type { Project } from "@/data/projects";
+import { ProjectCards, type ProjectCardEntry } from "@/components/cards";
 
-export function ProjectBrowser({ projects }: { projects: Project[] }) {
+export function ProjectBrowser({ projects }: { projects: ProjectCardEntry[] }) {
   const [category, setCategory] = useState("");
   const categories = [...new Set(projects.map((project) => project.category))].sort();
   const entries = category ? projects.filter((project) => project.category === category) : projects;

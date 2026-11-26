@@ -14,7 +14,8 @@ export const company = {
   coordinates: { latitude: 24.8359922, longitude: 55.0758532 },
   region: "UAE & GCC",
   facilityArea: { value: 202300, unit: "sq ft", label: "Dubai Industrial Park site" },
-  description: "YMS Engineering is a Dubai-based structural steel contractor serving projects across the UAE and GCC, with in-house engineering, fabrication, finishing and on-site erection.",
+  fabricationCapacity: { limit: "Up to 2,000", unit: "tons/month", qualifier: "Depending on project type." },
+  description: "With over 30 years of structural steel experience, YMS Engineering designs, fabricates and installs steelwork for high-rise, infrastructure, commercial and industrial projects across the UAE and Saudi Arabia.",
 };
 
 export const companyClaimsForReview = {

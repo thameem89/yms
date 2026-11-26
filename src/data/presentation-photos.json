@@ -1,0 +1,308 @@
+{
+  "al-habtoor-tower": [
+    {
+      "image": "projects/al-habtoor-tower/tower-render",
+      "caption": "Architectural render of Al Habtoor Tower",
+      "category": "Project Overview"
+    },
+    {
+      "image": "projects/al-habtoor-tower/tower-construction",
+      "caption": "Al Habtoor Tower under construction",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/al-habtoor-tower/temporary-propping",
+      "caption": "Temporary steelwork at the Al Habtoor Tower site",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/al-habtoor-tower/steel-beam-installation",
+      "caption": "Structural steel beam during site installation",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/al-habtoor-tower/steel-fabrication",
+      "caption": "YMS fabricator working on a steel assembly for Al Habtoor Tower",
+      "category": "Fabrication"
+    },
+    {
+      "image": "projects/al-habtoor-tower/steel-embedment",
+      "caption": "Steel embedment assembly with a grid of studs",
+      "category": "Fabrication"
+    },
+    {
+      "image": "projects/al-habtoor-tower/steel-connection-studs",
+      "caption": "Rows of studs on a fabricated steel member",
+      "category": "Fabrication"
+    }
+  ],
+  "damac-bay-2": [
+    {
+      "image": "projects/damac-bay-2/tower-render",
+      "caption": "Architectural render of DAMAC Bay 2",
+      "category": "Project Overview"
+    },
+    {
+      "image": "projects/damac-bay-2/composite-column",
+      "caption": "Round composite column at the DAMAC Bay 2 site",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/damac-bay-2/embedded-steel-plates",
+      "caption": "Embedded steel plate assemblies at DAMAC Bay 2",
+      "category": "Installation / Site Works"
+    }
+  ],
+  "al-habtoor-grand-residences": [
+    {
+      "image": "projects/al-habtoor-grand-residences/tower-render",
+      "caption": "Architectural render of Al Habtoor Grand Residences",
+      "category": "Project Overview"
+    },
+    {
+      "image": "projects/al-habtoor-grand-residences/tower-construction",
+      "caption": "Lower levels of Al Habtoor Grand Residences under construction",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/al-habtoor-grand-residences/fabricated-steel-member",
+      "caption": "Fabricated steel member inside the YMS workshop",
+      "category": "Fabrication"
+    },
+    {
+      "image": "projects/al-habtoor-grand-residences/steel-assembly",
+      "caption": "Box-shaped steel assembly with a circular opening",
+      "category": "Fabrication"
+    },
+    {
+      "image": "projects/al-habtoor-grand-residences/finished-steel-member",
+      "caption": "Coated structural steel member at the YMS facility",
+      "category": "Fabrication"
+    },
+    {
+      "image": "projects/al-habtoor-grand-residences/crane-lift",
+      "caption": "Gantry crane handling a fabricated steel member at the YMS facility",
+      "category": "Fabrication"
+    }
+  ],
+  "25hours-heimat": [
+    {
+      "image": "projects/25hours-heimat/site-steelwork",
+      "caption": "Steel assembly beside temporary access rails at the 25hours Heimat site",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/25hours-heimat/tower-render",
+      "caption": "Architectural render of 25hours Heimat in Downtown Dubai",
+      "category": "Project Overview"
+    },
+    {
+      "image": "projects/25hours-heimat/shear-plate-installation",
+      "caption": "Crew installing a studded steel plate at 25hours Heimat",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/25hours-heimat/encased-column-steelwork",
+      "caption": "Vertical steel column assembly in a reinforcement cage",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/25hours-heimat/steel-assembly",
+      "caption": "Vertical steel assembly with reinforcement and temporary barriers",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/25hours-heimat/installation-crew",
+      "caption": "Crew working beside a studded steel plate at 25hours Heimat",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/25hours-heimat/plate-detail",
+      "caption": "Worker beside a red studded plate at 25hours Heimat",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/25hours-heimat/plate-and-formwork",
+      "caption": "Red steel plate between formwork and reinforcement",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/25hours-heimat/crane-lift",
+      "caption": "Crane lifting a steel plate at the 25hours Heimat site",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/25hours-heimat/installed-plate",
+      "caption": "Steel plate positioned beside reinforcement at 25hours Heimat",
+      "category": "Installation / Site Works"
+    }
+  ],
+  "arabian-ranches-3": [
+    {
+      "image": "projects/arabian-ranches-3/villa-railings",
+      "caption": "Arabian Ranches 3 villa with terrace railings",
+      "category": "Project Overview"
+    },
+    {
+      "image": "projects/arabian-ranches-3/stair-handrail",
+      "caption": "Installed steel handrail on an interior villa staircase",
+      "category": "Installation / Site Works"
+    }
+  ],
+  "danube-diamondz": [
+    {
+      "image": "projects/danube-diamondz/site-shear-plates",
+      "caption": "Red shear plates and reinforcement at Danube Diamondz",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/danube-diamondz/tower-render",
+      "caption": "Architectural render of the Danube Diamondz tower",
+      "category": "Project Overview"
+    },
+    {
+      "image": "projects/danube-diamondz/shear-plate-installation",
+      "caption": "Crew beside studded shear plates at Danube Diamondz",
+      "category": "Installation / Site Works"
+    }
+  ],
+  "city-walk-bridge-gantry": [
+    {
+      "image": "projects/city-walk-bridge-gantry/night-lift",
+      "caption": "Night lift of the City Walk steel bridge gantry over the roadway",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/city-walk-bridge-gantry/night-installation",
+      "caption": "Elevated view of the gantry during nighttime installation",
+      "category": "Installation / Site Works"
+    }
+  ],
+  "nad-al-sheba-gardens": [
+    {
+      "image": "projects/nad-al-sheba-gardens/development-render",
+      "caption": "Architectural render of the Nad Al Sheba Gardens community",
+      "category": "Project Overview"
+    },
+    {
+      "image": "projects/nad-al-sheba-gardens/steel-staircase",
+      "caption": "Installed steel staircase with glazed balustrade at a villa",
+      "category": "Installation / Site Works"
+    }
+  ],
+  "burj-azizi-site-bridge": [
+    {
+      "image": "projects/burj-azizi-site-bridge/bridge-site",
+      "caption": "Steel site bridge at Burj Azizi alongside the roadway",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/burj-azizi-site-bridge/bridge-lift",
+      "caption": "Crane lifting the steel bridge at the Burj Azizi site",
+      "category": "Installation / Site Works"
+    }
+  ],
+  "oxygen-gym-al-khawaneej": [
+    {
+      "image": "projects/oxygen-gym-al-khawaneej/interior-fit-out",
+      "caption": "Exposed steel fit-out inside Oxygen Gym",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/oxygen-gym-al-khawaneej/gym-exterior",
+      "caption": "Oxygen Gym exterior at night in Al Khawaneej",
+      "category": "Project Overview"
+    },
+    {
+      "image": "projects/oxygen-gym-al-khawaneej/cantilever-truss",
+      "caption": "Cantilever truss visible during construction of Oxygen Gym",
+      "category": "Installation / Site Works"
+    }
+  ],
+  "dubai-marina-mall": [
+    {
+      "image": "projects/dubai-marina-mall/tower-crown",
+      "caption": "Steel crown over the curved Gourmet Tower façade",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/dubai-marina-mall/skylight",
+      "caption": "Steel framing visible beneath the mall skylight",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/dubai-marina-mall/mall-exterior",
+      "caption": "Dubai Marina Mall and Pier 7 exterior",
+      "category": "Project Overview"
+    }
+  ],
+  "al-reem-mall-abu-dhabi": [
+    {
+      "image": "projects/al-reem-mall-abu-dhabi/canopy-steelwork",
+      "caption": "Curved steel canopy framing at Al Reem Mall",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/al-reem-mall-abu-dhabi/entrance-steelwork",
+      "caption": "Steelwork and temporary supports at an Al Reem Mall entrance",
+      "category": "Installation / Site Works"
+    }
+  ],
+  "petrojet-peb-workshop-habshan": [
+    {
+      "image": "projects/petrojet-peb-workshop-habshan/peb-model",
+      "caption": "Structural model of the pre-engineered workshop frame",
+      "category": "Project Overview"
+    },
+    {
+      "image": "projects/petrojet-peb-workshop-habshan/workshop-erection",
+      "caption": "Crane placing steelwork at the Petrojet workshop site",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/petrojet-peb-workshop-habshan/workshop-frame",
+      "caption": "Panoramic view of the workshop steel frame during erection",
+      "category": "Installation / Site Works"
+    }
+  ],
+  "dubai-district-cooling-plant": [
+    {
+      "image": "projects/dubai-district-cooling-plant/plant-exterior",
+      "caption": "District Cooling Plant 1 exterior viewed from the road",
+      "category": "Project Overview"
+    }
+  ],
+  "warsan-substation": [
+    {
+      "image": "projects/warsan-substation/substation-exterior",
+      "caption": "Exterior of the DEWA substation at Warsan Accommodation",
+      "category": "Project Overview"
+    }
+  ],
+  "circlex-substation": [
+    {
+      "image": "projects/circlex-substation/substation-render",
+      "caption": "Architectural render of the Circlex 132/11 kV substation",
+      "category": "Project Overview"
+    }
+  ],
+  "dubai-international-airport-concourse": [
+    {
+      "image": "projects/dubai-international-airport-concourse/concourse-steelwork",
+      "caption": "Multi-storey steel framing at Dubai International Airport Concourse IV",
+      "category": "Installation / Site Works"
+    }
+  ],
+  "palm-jumeirah-water-treatment-plant": [
+    {
+      "image": "projects/palm-jumeirah-water-treatment-plant/piperack-steelwork",
+      "caption": "Pipes supported by structural steel at the Palm Jumeirah water treatment plant",
+      "category": "Installation / Site Works"
+    },
+    {
+      "image": "projects/palm-jumeirah-water-treatment-plant/piperack-frame",
+      "caption": "View through the steel piperack at the Palm Jumeirah water treatment plant",
+      "category": "Installation / Site Works"
+    }
+  ]
+}

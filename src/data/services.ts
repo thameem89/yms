@@ -1,9 +1,9 @@
 export const services = [
   {
-    slug: "design-engineering", name: "Design & Engineering", image: "design", alt: "Structural steel design and detailing work",
+    slug: "design-engineering", name: "Design & Engineering", image: "facilities/beam-line", alt: "CNC beam line that processes detailed steelwork in the YMS workshop",
     source: "/design", category: "Engineering", enquiryType: "Engineering / Design",
-    intro: "Structural design, detailing and drafting with fabrication and installation in mind.",
-    detail: "Our engineering and drafting teams develop structural steel designs to suit project requirements. They translate design information into coordinated drawings for fabrication and erection, with attention to applicable codes and specifications.",
+    intro: "In-house structural design and detailing for steel packages from fabrication through erection.",
+    detail: "Our in-house engineers and detailers develop structural steel designs against the project brief. They coordinate member and connection details with the workshop and site teams, then produce drawings for fabrication and erection.",
     capabilities: ["Structural steel design and value engineering", "Detailing and drafting for steel frames", "Stairs, platforms and roofing systems", "Coordination with fabrication and site teams"],
   },
   {
