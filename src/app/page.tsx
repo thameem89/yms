@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ButtonLink } from "@/components/actions";
+import { HomeHeroVideo } from "@/components/home-hero-video";
 import { Photo } from "@/components/photo";
 import { ContactBand, SectionLabel } from "@/components/visual";
 import { ProjectCards, ServiceCards } from "@/components/cards";
@@ -23,19 +24,18 @@ const markets = [
 export default function Home() {
   return <>
     <section className="hero home-hero">
-      <div className="home-hero-copy">
-        <SectionLabel>Structural steel engineering</SectionLabel>
-        <h1>Engineering complex steel structures. <em>Delivering landmark projects.</em></h1>
-        <p>{company.description}</p>
-        <div className="button-row">
-          <ButtonLink href="/projects" withIcon={false}>Explore Our Projects</ButtonLink>
-          <ButtonLink href="#services" variant="outline" withIcon={false}>Our Capabilities</ButtonLink>
+      <div className="wrap home-hero-inner">
+        <div className="home-hero-copy">
+          <SectionLabel>YMS Engineering LLC</SectionLabel>
+          <h1>Engineering complex steel structures.</h1>
+          <p>Over 30 years of structural steel expertise, delivering design, fabrication and installation solutions for major projects across the UAE and KSA.</p>
+          <div className="button-row">
+            <ButtonLink href="/projects" withIcon={false}>Explore Our Projects</ButtonLink>
+            <ButtonLink href="#services" variant="outline" withIcon={false}>Our Capabilities</ButtonLink>
+          </div>
         </div>
       </div>
-      <figure className="home-hero-visual">
-        <Photo image={heroImage} alt="YMS fabricator working on a steel assembly for Al Habtoor Tower" sizes="(max-width: 760px) 100vw, 52vw" preload />
-        <figcaption><Link href="/projects/al-habtoor-tower" prefetch={false}><strong>Al Habtoor Tower</strong><span>Steel fabrication at the YMS workshop</span></Link></figcaption>
-      </figure>
+      <HomeHeroVideo />
     </section>
 
     <section className="section wrap split home-intro" id="about">
